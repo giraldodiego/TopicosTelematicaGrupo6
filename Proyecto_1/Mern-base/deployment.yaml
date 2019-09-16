@@ -1,0 +1,56 @@
+---
+apiVersion: "apps/v1"
+kind: "Deployment"
+metadata:
+  name: "twitter-1"
+  namespace: "default"
+  labels:
+    app: "twitter-1"
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: "twitter-1"
+  template:
+    metadata:
+      labels:
+        app: "twitter-1"
+    spec:
+      containers:
+      - name: "nodeapp"
+        image: giraldodiego/telematica-grupo6
+	ports:
+	  - containerPort: 3000
+      - name: "nginx"
+        image: "nginx"
+	ports:
+	  - containerPort: 80
+	volumes:
+      	  - ./nginx.conf:/etc/nginx/nginx.conf:ro
+      	  - ./ssl:/etc/nginx/ssl
+      - name: "mongo"
+        image: "mongo"
+	ports:
+	  - - containerPort: 27017
+	volumes:
+      	  - ./data:/data/db
+---
+apiVersion: "autoscaling/v2beta1"
+kind: "HorizontalPodAutoscaler"
+metadata:
+  name: "twitter-1-hpa"
+  namespace: "default"
+  labels:
+    app: "twitter-1"
+spec:
+  scaleTargetRef:
+    kind: "Deployment"
+    name: "twitter-1"
+    apiVersion: "apps/v1"
+  minReplicas: 1
+  maxReplicas: 5
+  metrics:
+  - type: "Resource"
+    resource:
+      name: "cpu"
+      targetAverageUtilization: 80
