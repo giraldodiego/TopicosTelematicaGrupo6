@@ -4,7 +4,7 @@ LABEL version="1.0"
 LABEL description="Twiker"
 LABEL maintainer="Santiago Ortiz Cano - Sortizc1@eafit.edu.co"
 
-ARG PORT=3000
+ARG PORT=443
 ENV PORT $PORT
 
 WORKDIR /nodeApp
@@ -14,7 +14,7 @@ RUN npm install
 RUN npm install glob
 RUN npm install --test
 
-EXPOSE 3000
+EXPOSE 443
 
 CMD sudo mongod
 CMD npm run webpack
