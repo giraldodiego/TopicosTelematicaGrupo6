@@ -31,3 +31,17 @@ La aplicación debe ser resistente a cualquier eventual fallo, debe poder ser ca
 - Rendimiento:
 La aplicación debe ser lo suficientemente rápida en sus respuestas para garantizar una fluidez y dinamismo en la misma. La aplicación debe poder ser capaz de soportar con el mismo ritmo de ejecución el triple de la carga habitual del sistema. La aplicación debe ser lo suficientemente optima, para hacer la menor cantidad de operaciones de interacción de capas sin afectar su rendimiento en el modulo responsable.
 
+# Rediseño de la aplicación (Proyecto 1):
+
+- Seguridad:
+La aplicacion pasa de no tener ningun tipo de proteccion pudiendo cualquier usuario sin registarse el poder manipular sin ningun tipo de restriccion todas las funcionalidades a tener un sistema de gestion de usuarios, dandole la posibilidad unicamente a cada usuario registrado la manipulación de sus publicaciones. El sistema pasa de no tener ningun soporte de usuarios a tener un modelo de base de datos respaldando dicha funcionalidad ademas de no guardar ningun tipo de contraseña en texto plano, en ves de éso, se almacena con un cifrado de 128 bits tipo hash en el momento del registro y se confirma su identidad haciendo comparacion directa entre la cadena y el hash evitando la captura de informacion sensible en caso verse comprometida . El sistema pasa de ser totalmente vulnerable a ataques de Cross origin, DOS y Man in the midle a ser servido directamente desde un servidor de depliegue "waitress" en ves del servidor por defecto del framework, ésto, ya que este nuevo servidor configurará la cola de peticiones y distribuirá de manera segura las peticiones evitando errores provocados. Se le añaden ademas validaciones de registros aplicando politicas de contraseñas y demás.
+
+- Disponibilidad:
+
+
+
+
+
+
+
+
