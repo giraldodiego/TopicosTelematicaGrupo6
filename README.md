@@ -38,7 +38,8 @@ La aplicacion pasa de no tener ningun tipo de proteccion pudiendo cualquier usua
 
 - Disponibilidad:
 
-
+- Rendimiento:
+La aplicacion contenia una gran cantidad de llamados a la base de datos. lo que provocaba una sobre carga al servidor y una rapida caida en situaciones donde era alta la demanda, ademas de tener una gran cantidad de variables que aparte de sobrecargar el cache, eran variables repetidas que contenian igual tipo de variable, ademas de no poseer llamados asincronos , lo que provocaba mayor lentitud en cada solicitud que el usuario queria crear , aparte , se redujo el area de renderizado, esto apoyado por la parte de seguridad, que al no estar logueado, varios componentes para comentar y crear foros no son mostrados reduciendo la carga y siendo agil al mostrar algo a usuario, por otro lado se eliminaron componentes o informacion basura que solo provocaban que los recursos pesaran mas y por ende fuera mas demorado la carga.
 
 
 
