@@ -65,6 +65,32 @@ Estos son los pasos necesarios para desplegar la app en un cluster de Kubernetes
 
 7. Ahora correr `kubectl apply -f myfile.yaml` con los .yaml de Kubernetes que están en el proyecto (twitter-deployment, mongo-deployment y mongo-service), esto es lo que desplegará las imágenes en nuestro cluster. La app ya debería quedar corriendo correctamente
 
+Aquí hay algunas screenshots de la consola del proyecto en GCloud
+
+- Clusters
+
+![Clusters](clusters.png)
+
+- Cargas de trabajo (los despliegues: la app y la base de datos)
+
+![Workloads](workloads.png)
+
+- Nodos de la App: tiene mínimo dos réplicas, con autoreparación, y se puede autoescalar hasta 5 réplicas. La BD tiene una sola réplica.
+
+![Nodes](nodes.png)
+
+- Servicios (load balancer y la BD expuesta en la ip del cluster)
+
+![Services](services.png)
+
+- Vomunenes (el volumen de la BD)
+
+![Volumes](volumes.png)
+
+
+
+
+
 
 
 
