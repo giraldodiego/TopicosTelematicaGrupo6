@@ -47,6 +47,24 @@ La aplicacion pasa de no tener ningun tipo de proteccion pudiendo cualquier usua
 - Disponibilidad:
 La aplicación no tenía ningún tipo de autoescalabilidad ni autoreparación, con el despliegue en el cluster que se creó de Kubernetes pasa a tener un mínimo de instancias disponibles, por lo que automáticamente intentará reparar los pods que estén caídos por alguna razón, además de esto dependiendo de los recursos asignados a los pods, si estos se acabaran crearía automáticamene uno nuevo para poder recibir más tráfico, por lo tanto sería un sistema altísima disponibilidad. También se separó la base de datos del resto de la aplicación en una instancia diferente, y un volumen independiente, esto hace que la persistencia esté desacoplada, y así los N nodos que hayan se puedan comunicar con una única instancia de esta, lo que hace más difícil aún que se caiga todo el sistema, o que si este se cae afecte la base de datos.
 
+# Documentación para correr en Kubernetes (GCloud)
+
+Estos son los pasos necesarios para desplegar la app en un cluster de Kubernetes.
+
+1. Crear una cuenta en https://cloud.google.com y activar los $300 dolares de prueba que da Google
+
+2. Instalar el SDK de GCloud, el cuál se puede descargar aquí https://cloud.google.com/sdk/downloads?hl=es
+
+3. Ir a la pestaña de Kubernetes Engine en la parte izquierda de la ventana
+
+4. Crear un cluster con las caracteristicas deseadas 
+
+5. En la linea de comandos de tu SO correr el comando `gcloud auth login` y seguir las instrucciones para iniciar con tus credenciales en el SDK
+
+6. En la página de GCloud hacer click en tu cluster y luego en el botón Conectar, copiar el comando que aparece y correrlo en tu linea de comandos, esto nos dará acceso al cluster desde nuestro PC
+
+7. Ahora correr `kubectl apply -f myfile.yaml` con los .yaml de Kubernetes que están en el proyecto (twitter-deployment, mongo-deployment y mongo-service), esto es lo que desplegará las imágenes en nuestro cluster. La app ya debería quedar corriendo correctamente
+
 
 
 
