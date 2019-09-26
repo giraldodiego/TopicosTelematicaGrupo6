@@ -77,7 +77,7 @@ Aquí hay algunas screenshots de la consola del proyecto en GCloud
 
 - Nodos de la App: tiene mínimo dos réplicas, con autoreparación, y se puede autoescalar hasta 5 réplicas. La BD tiene una sola réplica.
 
-![Nodes](nodes.png)
+![Nodes](twitter_nodes.png)
 
 - Servicios (load balancer y la BD expuesta en la ip del cluster)
 
